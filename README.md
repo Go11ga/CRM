@@ -1,4 +1,4 @@
-# test
+# CRM
 
 ## Project setup
 ```
