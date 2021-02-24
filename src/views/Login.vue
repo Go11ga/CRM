@@ -84,7 +84,7 @@ export default {
     }
   },
   methods: {
-    submitHandler () {
+    async submitHandler () {
       this.$v.$touch()
 
       if (this.$v.$invalid) {
@@ -95,8 +95,11 @@ export default {
         email: this.email,
         password: this.password
       }
-    
+
+      try {
+        await this.$store.dispatch('login', formData)
       this.$router.push('/')
+      } catch (e) {}
     }
   }
 }
