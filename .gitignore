@@ -2,6 +2,7 @@
 node_modules
 /dist
 /src/templates
+.env
 
 
 # local env files

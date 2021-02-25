@@ -16,7 +16,7 @@
             data-target="dropdown"
             ref="dropdown"
           >
-            USER NAME
+            {{ name }}
             <i class="material-icons right">arrow_drop_down</i>
           </a>
 
@@ -54,7 +54,12 @@ export default {
       this.$router.push('/login?message=logout')
     }
   },
-   mounted () {
+  computed: {
+    name () {
+      return this.$store.getters.info.name
+    }
+  },
+  mounted () {
     this.interval = setInterval(() => {
       this.date = new Date()
     }, 1000)
