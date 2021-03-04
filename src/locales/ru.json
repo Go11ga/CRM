@@ -1,0 +1,8 @@
+{
+  "Profile_Title" : "Профиль",
+  "Profile_Message_EnterName": "Введите имя",
+  "Profile_Message_NameLength": "Имя должно быть не менее",
+  "Profile_Message_WordSymbols": "символов",
+  "Profile_Name": "Имя",
+  "Profile_Update": "Обновить"
+}

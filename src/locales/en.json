@@ -1,0 +1,8 @@
+{
+  "Profile_Title" : "Profile",
+  "Profile_Message_EnterName": "Enter name",
+  "Profile_Message_NameLength": "Field must me no less than",
+  "Profile_Message_WordSymbols": "symbols",
+  "Profile_Name" : "Name",
+  "Profile_Update": "Update"
+}
