@@ -4,5 +4,10 @@
   "Profile_Message_NameLength": "Field must me no less than",
   "Profile_Message_WordSymbols": "symbols",
   "Profile_Name" : "Name",
-  "Profile_Update": "Update"
+  "Profile_Update": "Update",
+  "Sidebar_Bill": "Bill",
+  "Sidebar_History": "History",
+  "Sidebar_Planning": "Planning",
+  "Sidebar_New_Record": "New record",
+  "Sidebar_Categories": "Categories"
 }

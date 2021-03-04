@@ -4,5 +4,10 @@
   "Profile_Message_NameLength": "Имя должно быть не менее",
   "Profile_Message_WordSymbols": "символов",
   "Profile_Name": "Имя",
-  "Profile_Update": "Обновить"
+  "Profile_Update": "Обновить",
+  "Sidebar_Bill": "Счет",
+  "Sidebar_History": "История",
+  "Sidebar_Planning": "Планирование",
+  "Sidebar_New_Record": "Новая запись",
+  "Sidebar_Categories": "Категории"
 }
