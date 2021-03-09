@@ -1,4 +1,5 @@
 import firebase from 'firebase/app'
+import category from './category'
 
 export default {
   actions: {
@@ -23,11 +24,29 @@ export default {
       }
     },
     async fetchRecordById ({ dispatch, commit }, id) {
+      console.log(id);
       try {
         const uid = await dispatch('getUid')
         const record = (await firebase.database().ref(`/users/${uid}/records`).child(id).once('value')).val() || {}
 
         return {...record, id}
+      } catch (e) {
+        commit('setError', e)
+        throw e
+      }
+    },
+    async removeRecords ({ dispatch, commit }, categoryId) {
+      try {
+        const uid = await dispatch('getUid')
+
+        const records = (await dispatch('fetchRecords')).filter(el => el.categoryId === categoryId).map(el => el.id)
+        
+        const promices = records.map(el => {
+          return firebase.database().ref(`/users/${uid}/records`).child(el).remove()
+        })
+
+        await Promise.all(promices)
+
       } catch (e) {
         commit('setError', e)
         throw e
