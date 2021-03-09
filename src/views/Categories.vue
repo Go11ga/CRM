@@ -15,6 +15,7 @@
           :categories="categories"
           :key="categories.length + updateCount"
           @updated="updateCategories"
+          @removed="removeCategory"
         />
 
         <p class="center" v-else>
@@ -54,6 +55,10 @@ export default {
       this.categories[idx].title = category.title
       this.categories[idx].limit = category.limit
       this.updateCount++
+    },
+    removeCategory (id) {
+      const idx = this.categories.findIndex(el => el.id === id)
+      this.categories.splice(idx, 1)
     }
   },
   async mounted () {

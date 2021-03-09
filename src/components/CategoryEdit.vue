@@ -56,6 +56,23 @@
           <i class="material-icons right">send</i>
         </button>
       </form>
+      
+      <button data-target="modal1" class="btn waves-effect waves-light red mt-1 modal-trigger">
+        Удалить
+        <i class="material-icons right">cancel</i>
+      </button>
+
+      <div id="modal1" class="modal" ref="modal">
+        <div class="modal-content">
+          <h4>Удалить категорию {{ title }} ?</h4>
+        </div>
+        <div class="modal-footer">
+          <button class="btn waves-effect waves-light red" @click.prevent="remove">
+            Удалить
+          </button>
+        </div>
+      </div>
+      
     </div>
   </div>
 </template>
@@ -106,6 +123,20 @@ export default {
         this.$message('Категория обновлена')
         this.$emit('updated', categoryData)
       } catch (e) {}
+    },
+    async remove () {
+      try {
+        await this.$store.dispatch('removeCategory', this.current)
+        this.$message('Категория удалена')
+        this.$emit('removed', this.current)
+        
+      } catch (e) {
+
+      } finally {
+        const elem = this.$refs.modal
+        const instance = M.Modal.getInstance(elem)
+        instance.close()
+      }
     }
   },
   created () {
@@ -117,6 +148,9 @@ export default {
   mounted () {
     this.select = M.FormSelect.init(this.$refs.select)
     M.updateTextFields()
+
+    const elem = this.$refs.modal
+    M.Modal.init(elem);
   },
   destroyed () {
     if (this.select && this.select.destroy) {
@@ -125,3 +159,9 @@ export default {
   }
 }
 </script>
+
+<style scoped lang="scss">
+  .mt-1 {
+    margin-top: 1rem;
+  }
+</style>
