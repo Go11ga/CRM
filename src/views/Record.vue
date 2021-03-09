@@ -121,17 +121,19 @@ export default {
     description: { required }
   },
   async mounted () {
-    this.categories = await this.$store.dispatch('fetchCategories')
-    this.loading = false
+    try {
+      this.categories = await this.$store.dispatch('fetchCategories')
+      this.loading = false
 
-    if (this.categories.length) {
-      this.category = this.categories[0].id
-    }
+      if (this.categories.length) {
+        this.category = this.categories[0].id
+      }
 
-    setTimeout(() => {
-      this.select = M.FormSelect.init(this.$refs.select)
-      M.updateTextFields()
-    }, 0)  
+      setTimeout(() => {
+        this.select = M.FormSelect.init(this.$refs.select)
+        M.updateTextFields()
+      }, 0)  
+    } catch (e) {}
   },
   destroyed () {
     if (this.select && this.select.destroy) {

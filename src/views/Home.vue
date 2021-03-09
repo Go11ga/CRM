@@ -40,8 +40,10 @@ export default {
     HomeBill, HomeCurrency
   },
   async mounted () {
-    this.currency = await this.$store.dispatch('fetchCurrency')
-    this.loading = false
+    try {
+      this.currency = await this.$store.dispatch('fetchCurrency')
+      this.loading = false
+    } catch (e) {} 
   },
   data () {
     return {
@@ -51,9 +53,11 @@ export default {
   },
   methods: {
     async refresh () {
-      this.loading = true
-      this.currency = await this.$store.dispatch('fetchCurrency')
-      this.loading = false
+      try {
+        this.loading = true
+        this.currency = await this.$store.dispatch('fetchCurrency')
+        this.loading = false
+      } catch (e) {}
     }
   }
 }

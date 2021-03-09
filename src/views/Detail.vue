@@ -50,16 +50,18 @@ export default {
     loading: true
   }),
   async mounted () {
-    const id = this.$route.params.id
-    const record = await this.$store.dispatch('fetchRecordById', id)
-    const category = await this.$store.dispatch('fetchCategoryById', record.categoryId)
+    try {
+      const id = this.$route.params.id
+      const record = await this.$store.dispatch('fetchRecordById', id)
+      const category = await this.$store.dispatch('fetchCategoryById', record.categoryId)
 
-    this.record = {
-      ...record,
-      categoryName: category.title
-    }
+      this.record = {
+        ...record,
+        categoryName: category.title
+      }
 
-    this.loading = false
+      this.loading = false
+    } catch (e) {}
   }
 }
 </script>

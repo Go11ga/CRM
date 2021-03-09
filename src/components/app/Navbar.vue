@@ -50,8 +50,10 @@ export default {
   },
   methods: {
     async logout () {
-      await this.$store.dispatch('logout')
-      this.$router.push('/login?message=logout')
+      try {
+        await this.$store.dispatch('logout')
+        this.$router.push('/login?message=logout')
+      } catch (e) {}
     }
   },
   computed: {

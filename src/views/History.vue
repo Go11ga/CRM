@@ -57,12 +57,14 @@ export default {
     records: []
   }),
   async mounted () {
-    this.records = await this.$store.dispatch('fetchRecords')
-    const categories = await this.$store.dispatch('fetchCategories')
+    try {
+      this.records = await this.$store.dispatch('fetchRecords')
+      const categories = await this.$store.dispatch('fetchCategories')
 
-    this.setup(categories)
+      this.setup(categories)
 
-    this.loading = false
+      this.loading = false
+    } catch (e) {}
   },
   methods: {
     setup (categories) {

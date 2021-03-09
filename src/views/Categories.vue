@@ -62,8 +62,10 @@ export default {
     }
   },
   async mounted () {
-    this.categories = await this.$store.dispatch('fetchCategories')
-    this.loading = false
+    try {
+      this.categories = await this.$store.dispatch('fetchCategories')
+      this.loading = false
+    } catch (e) {}
   }
 }
 </script>

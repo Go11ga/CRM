@@ -57,38 +57,40 @@ export default {
     ...mapGetters(['info'])
   },
   async mounted () {
-    const records = await this.$store.dispatch('fetchRecords')
-    const categories = await this.$store.dispatch('fetchCategories')
+    try {
+      const records = await this.$store.dispatch('fetchRecords')
+      const categories = await this.$store.dispatch('fetchCategories')
 
-    this.categories = categories.map(cat => {
-      const spent = records
-        .filter(r => r.categoryId === cat.id)
-        .filter(r => r.type === 'outcome')
-        .reduce((total, record) => {
-          return total += +record.amount
-        }, 0)
-      
-      const percent = 100 * spent / cat.limit
-      const progressPercent = percent > 100 ? 100 : percent
-      const progressColor = percent < 60 
-        ? 'green'
-        : percent < 100
-          ? 'yellow'
-          : 'red'
-      
-      const tooltipValue = cat.limit - spent
-      const tooltip = `${tooltipValue < 0 ? 'Превышение на' : 'Осталось'} ${currencyFilter(Math.abs(tooltipValue))}`
+      this.categories = categories.map(cat => {
+        const spent = records
+          .filter(r => r.categoryId === cat.id)
+          .filter(r => r.type === 'outcome')
+          .reduce((total, record) => {
+            return total += +record.amount
+          }, 0)
+        
+        const percent = 100 * spent / cat.limit
+        const progressPercent = percent > 100 ? 100 : percent
+        const progressColor = percent < 60 
+          ? 'green'
+          : percent < 100
+            ? 'yellow'
+            : 'red'
+        
+        const tooltipValue = cat.limit - spent
+        const tooltip = `${tooltipValue < 0 ? 'Превышение на' : 'Осталось'} ${currencyFilter(Math.abs(tooltipValue))}`
 
-      return {
-        ...cat,
-        progressPercent,
-        progressColor,
-        spent,
-        tooltip
-      }
-    })
+        return {
+          ...cat,
+          progressPercent,
+          progressColor,
+          spent,
+          tooltip
+        }
+      })
 
-    this.loading = false
+      this.loading = false
+    } catch (e) {}
   }
 }
 </script>
