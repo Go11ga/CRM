@@ -1,5 +1,13 @@
 {
+  "Categories_Title" : "Категории",
+  "Detail_Title" : "Категория",
+  "History_Title" : "История",
+  "Home_Title" : "Главная",
+  "Login_Title" : "Авторизация",
+  "Planning_Title" : "Планирования",
   "Profile_Title" : "Профиль",
+  "Record_Title" : "Запись",
+  "Register_Title" : "Регистрация",
   "Profile_Message_EnterName": "Введите имя",
   "Profile_Message_NameLength": "Имя должно быть не менее",
   "Profile_Message_WordSymbols": "символов",

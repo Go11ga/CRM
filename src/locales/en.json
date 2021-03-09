@@ -1,5 +1,13 @@
 {
+  "Categories_Title" : "Categories",
+  "Detail_Title" : "Category",
+  "History_Title" : "History",
+  "Home_Title" : "Home",
+  "Login_Title" : "Login",
+  "Planning_Title" : "Planning",
   "Profile_Title" : "Profile",
+  "Record_Title" : "Record",
+  "Register_Title" : "Register",
   "Profile_Message_EnterName": "Enter name",
   "Profile_Message_NameLength": "Field must me no less than",
   "Profile_Message_WordSymbols": "symbols",
