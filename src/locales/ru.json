@@ -94,5 +94,6 @@
   "Sidebar_Categories": "Категории",
   "Navbar_Profile": "Профиль",
   "Navbar_Exit": "Выйти",
-  "MainLayout_Create_New_Record": "Создать новую запись"
+  "MainLayout_Create_New_Record": "Создать новую запись",
+  "Message_Error": "Ошибка"
 }
