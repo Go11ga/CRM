@@ -26,6 +26,7 @@ export default {
         const uid = await dispatch('getUid')
         const info = (await firebase.database().ref(`/users/${uid}/info`).once('value')).val()
         commit('setInfo', info)
+        localStorage.setItem('lang', info.locale)
       } catch (e) {
         commit('setError', e)
         throw e
@@ -37,6 +38,7 @@ export default {
         const updateData = {...getters.info, ...toUpdate}
         await firebase.database().ref(`/users/${uid}/info`).update(updateData)
         commit('setInfo', updateData)
+        localStorage.setItem('lang', getters.info.locale)
       } catch (e) {
         commit('setError', e)
         throw e

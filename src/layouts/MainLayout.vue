@@ -13,11 +13,13 @@
         </div>
       </main>
 
-      <div class="fixed-action-btn">
-        <router-link class="btn-floating btn-large blue" data-position="top" to="/record" v-tooltip="'Создать новую запись'">
+      
+      <div class="fixed-action-btn" :key="locale + '1'">
+        <router-link class="btn-floating btn-large blue" data-position="top" to="/record" v-tooltip="'MainLayout_Create_New_Record'">
           <i class="large material-icons">add</i>
         </router-link>
       </div>
+      
     </div>
   </div>
 </template>
@@ -33,12 +35,10 @@ export default {
     Navbar,
     Sidebar
   },
-  data () {
-    return {
-      isOpen: true,
-      loading: true
-    }
-  },
+  data: () => ({
+    isOpen: true,
+    loading: true
+  }),
   async mounted () {
     if (!Object.keys(this.$store.getters.info).length) {
       await this.$store.dispatch('fetchInfo')

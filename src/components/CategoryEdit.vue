@@ -2,7 +2,9 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Редактировать</h4>
+        <h4>
+          {{'Categories_Edit' | localize}}
+        </h4>
       </div>
 
       <form @submit.prevent="submitHandler">
@@ -16,7 +18,7 @@
               {{ cat.title }}
             </option>
           </select>
-          <label>Выберите категорию</label>
+          <label>{{'Categories_Choose' | localize}}</label>
         </div>
 
         <div class="input-field">
@@ -26,12 +28,12 @@
             v-model.trim="$v.title.$model"
             :class="{ invalid: $v.title.$dirty && !$v.title.required }"
           >
-          <label for="name">Название</label>
+          <label for="name">{{'Categories_Name' | localize}}</label>
           <span 
             class="helper-text invalid"
             v-if="$v.title.$dirty && !$v.title.required"
           >
-            Введите название категории
+            {{'Categories_Name_Input' | localize}}
           </span>
         </div>
 
@@ -42,33 +44,33 @@
             v-model.number="$v.limit.$model"
             :class="{ invalid: ($v.limit.$dirty && !$v.limit.required) || ($v.limit.$dirty && !$v.limit.minValue) }"
           >
-          <label for="limit">Лимит</label>
+          <label for="limit">{{'Categories_Limit' | localize}}</label>
           <span 
             class="helper-text invalid"
             v-if="($v.limit.$dirty && !$v.limit.required) || ($v.limit.$dirty && !$v.limit.minValue)"
           >
-            Минимальная величина {{$v.limit.$params.minValue.min}}
+            {{'Categories_Min_Value' | localize}} {{$v.limit.$params.minValue.min}}
           </span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Обновить
+          {{'Categories_Update' | localize}}
           <i class="material-icons right">send</i>
         </button>
       </form>
       
       <button data-target="modal1" class="btn waves-effect waves-light red mt-1 modal-trigger">
-        Удалить
+        {{'Categories_Remove' | localize}}
         <i class="material-icons right">cancel</i>
       </button>
 
       <div id="modal1" class="modal" ref="modal">
         <div class="modal-content">
-          <h4>Удалить категорию {{ title }} ?</h4>
+          <h4>{{'Categories_Remove_Cat' | localize}} {{ title }} ?</h4>
         </div>
         <div class="modal-footer">
           <button class="btn waves-effect waves-light red" @click.prevent="remove">
-            Удалить
+            {{'Categories_Remove' | localize}}
           </button>
         </div>
       </div>

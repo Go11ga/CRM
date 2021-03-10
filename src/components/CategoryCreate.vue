@@ -2,7 +2,9 @@
   <div class="col s12 m6">
     <div>
       <div class="page-subtitle">
-        <h4>Создать</h4>
+        <h4>
+          {{'Categories_Create' | localize}}
+        </h4>
       </div>
 
       <form @submit.prevent="submitHandler">
@@ -13,12 +15,12 @@
             v-model.trim="$v.title.$model"
             :class="{ invalid: $v.title.$dirty && !$v.title.required }"
           >
-          <label for="name">Название</label>
+          <label for="name">{{'Categories_Name' | localize}}</label>
           <span 
             class="helper-text invalid"
             v-if="$v.title.$dirty && !$v.title.required"
           >
-            Введите название категории
+            {{'Categories_Name_Input' | localize}}
           </span>
         </div>
 
@@ -29,17 +31,17 @@
             v-model.number="$v.limit.$model"
             :class="{ invalid: ($v.limit.$dirty && !$v.limit.required) || ($v.limit.$dirty && !$v.limit.minValue) }"
           >
-          <label for="limit">Лимит</label>
+          <label for="limit">{{'Categories_Limit' | localize}}</label>
           <span 
             class="helper-text invalid"
             v-if="($v.limit.$dirty && !$v.limit.required) || ($v.limit.$dirty && !$v.limit.minValue)"
           >
-            Минимальная величина {{$v.limit.$params.minValue.min}}
+            {{'Categories_Min_Value' | localize}} {{$v.limit.$params.minValue.min}}
           </span>
         </div>
 
         <button class="btn waves-effect waves-light" type="submit">
-          Создать
+          {{'Categories_Create' | localize}}
           <i class="material-icons right">send</i>
         </button>
       </form>

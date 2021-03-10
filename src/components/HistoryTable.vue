@@ -3,11 +3,11 @@
     <thead>
     <tr>
       <th>#</th>
-      <th>Сумма</th>
-      <th>Дата</th>
-      <th>Категория</th>
-      <th>Тип</th>
-      <th>Открыть</th>
+      <th>{{'History_Sum' | localize}}</th>
+      <th>{{'History_Date' | localize}}</th>
+      <th>{{'History_Category' | localize}}</th>
+      <th>{{'History_Type' | localize}}</th>
+      <th>{{'History_Open' | localize}}</th>
     </tr>
     </thead>
 
@@ -22,12 +22,12 @@
           class="white-text badge" 
           :class="[record.typeClass]"
         >
-          {{ record.typeText }}
+          {{ record.typeText === 'Расход' ? outcome : income }}
         </span>
       </td>
       <td>
         <button
-          v-tooltip="'Посмотреть запись'" 
+          v-tooltip="'History_Watch'" 
           class="btn-small btn" 
           @click="$router.push('/detail/' + record.id)"
         >
@@ -40,11 +40,21 @@
 </template>
 
 <script>
+import localizeFilter from '@/filters/localize.filter'
+
 export default {
   props: {
     records: {
       type: Array,
       required: true
+    }
+  },
+  computed: {
+    income () {
+      return localizeFilter('Detail_Income')
+    },
+    outcome () { 
+      return localizeFilter('Detail_Outcome')
     }
   }
 }

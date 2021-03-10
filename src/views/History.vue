@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="page-title">
-      <h3>История записей</h3>
+      <h3>
+        {{'History_Name' | localize}}
+      </h3>
     </div>
 
     <div class="history-chart">
@@ -11,9 +13,9 @@
     <Loader v-if="loading" />
 
     <p class="center" v-else-if="!records.length">
-      Записей пока нет
+      {{'History_Empty' | localize}}
       <router-link to="/record">
-        Добавить запись
+        {{'History_Add' | localize}}
       </router-link>
     </p>
 
@@ -26,8 +28,8 @@
         v-model="page"
         :page-count="pageCount"
         :click-handler="pageChangeHandler"
-        :prev-text="'Назад'"
-        :next-text="'Вперед'"
+        :prev-text="prev"
+        :next-text="next"
         :container-class="'pagination'"
         :page-class="'waves-effect'"
       />
@@ -39,6 +41,7 @@
 import HistoryTable from '@/components/HistoryTable'
 import paginationMixin from '@/mixins/pagination.mixin'
 import { Pie } from 'vue-chartjs'
+import localizeFilter from '@/filters/localize.filter'
 
 export default {
   name: 'history',
@@ -56,6 +59,14 @@ export default {
     loading: true,
     records: []
   }),
+  computed: {
+    prev () {
+      return localizeFilter('History_Prev')
+    },
+    next () {
+      return localizeFilter('History_Next')
+    }
+  },
   async mounted () {
     try {
       this.records = await this.$store.dispatch('fetchRecords')

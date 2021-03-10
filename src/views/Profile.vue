@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="page-title">
+    <div class="page-title" :key="info.locale">
       <h3>{{ 'Profile_Title' | localize() }}</h3>
     </div>
 
